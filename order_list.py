@@ -27,7 +27,6 @@ def quick_order_dict(input: List[int]) -> Dict[int, int]:
         next_number += 1
     return result
     
-    
 def to_order_list(input: List[int]) -> List[int]:
     order_dict: Dict[int, int] = quick_order_dict(input)
     return list(map(lambda x: order_dict[x], input))

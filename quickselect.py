@@ -1,12 +1,20 @@
 from typing import List, Optional
 
-# Focuses on the contents of list 'arr' between indices 'left' and 'right' (inclusive) and partitions them based on a pivot value
-# The pivot value is always the value at index 'right'.
-# Outside of the indices 'left' and 'right', 'arr' will stay unchanged.
-# Between these indices the array will be reorganized as follows:
-# Values less than the pivot value will come first, followed by the pivot value and then the values greater then the pivot
-# The return value is the new index of the pivot value
 def partition(arr: List[int], left: int, right: int) -> int:
+    """Partition part of a list based on a pivot element
+    The pivot element is always the element at index 'right'.
+    When this function returns, 'arr' will be reorganized as follows:
+    - outside of indices 'left' to 'right', it stays unchanged
+    - between indices 'left' and 'right values smaller than the pivot are followed by the pivot
+      element and then by values greater than or equal to the pivot
+
+    Arguments:
+    arr   - the list to operate on
+    left  - start index of the list part that should be partitioned
+    right - end index of the list part that should be partitioned
+
+    Return value: new index of the pivot element
+    """
     assert 0 <= left and left < len(arr) and 0 <= right and right < len(arr)
     pivot: int = arr[right]
     i, j = left, right - 1
@@ -21,9 +29,10 @@ def partition(arr: List[int], left: int, right: int) -> int:
     arr[i], arr[right] = arr[right], arr[i]
     return i
 
-# Returns the 'k'-th smalles element of list 'arr'.
-# More specifically, that is the element that would be at index 'k' if the list was sorted
 def quickselect(arr: List[int], k: int) -> Optional[int]:
+    """Return the k-smallest element of a list, i.e. the element which would be at index k if
+       the list-was sorted
+    """
     if k < 0 or k >= len(arr):
         return None
     tmp_arr: List[int] = arr[:]
